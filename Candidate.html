@@ -17,13 +17,11 @@
     }
 
     header, main { max-width: 850px; margin: auto; }
-
     header a {
       color: #6650d9;
       text-decoration: none;
       font-weight: bold;
     }
-
     main { margin-top: 35px; }
 
     .tag {
@@ -50,7 +48,7 @@
 
     label { display: block; margin: 17px 0 8px; font-weight: bold; }
 
-    input, textarea, select {
+    input, textarea {
       width: 100%;
       padding: 14px;
       border: 1px solid #d9d3f3;
@@ -60,7 +58,7 @@
       color: #292253;
     }
 
-    input:focus, textarea:focus, select:focus {
+    input:focus, textarea:focus {
       outline: 2px solid #a99bf5;
       border-color: #7658e8;
     }
@@ -90,8 +88,12 @@
       line-height: 1.6;
     }
 
-    .note { font-size: 13px; color: #77708f; margin-top: 16px; }
+    #message a {
+      color: #17653c;
+      font-weight: bold;
+    }
 
+    .note { font-size: 13px; color: #77708f; margin-top: 16px; }
     footer { text-align: center; margin-top: 30px; color: #77708f; font-size: 13px; }
   </style>
 </head>
@@ -124,7 +126,6 @@
       <button type="submit">Register as Candidate →</button>
 
       <p class="note">Student project demonstration only. Do not enter real personal information or passwords.</p>
-
       <div id="message" role="status"></div>
     </form>
   </main>
@@ -136,26 +137,34 @@
       event.preventDefault();
 
       const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
       const group = document.getElementById("group").value.trim();
-      const message = document.getElementById("message");
+      const statement = document.getElementById("statement").value.trim();
 
-      message.innerHTML =
-        "<strong>Registration demonstration complete!</strong><br>" +
-        "Welcome, " + escapeText(name) + ".<br>" +
-        "Group: " + escapeText(group) +
-        "<br><br><a href='candidate-dashboard.html'>Continue to Candidate Dashboard →</a>";
+      const candidate = { name, email, group, statement };
+      sessionStorage.setItem("demoCandidateProfile", JSON.stringify(candidate));
+
+      const message = document.getElementById("message");
+      message.textContent = "";
+
+      const heading = document.createElement("strong");
+      heading.textContent = "Registration demonstration complete!";
+      message.appendChild(heading);
+      message.appendChild(document.createElement("br"));
+
+      const welcome = document.createElement("span");
+      welcome.textContent = "Welcome, " + name + ". Your group: " + group + ".";
+      message.appendChild(welcome);
+      message.appendChild(document.createElement("br"));
+      message.appendChild(document.createElement("br"));
+
+      const link = document.createElement("a");
+      link.href = "candidate-login.html";
+      link.textContent = "Continue to Candidate Login →";
+      message.appendChild(link);
 
       message.style.display = "block";
     });
-
-    function escapeText(value) {
-      return value.replace(/[&<>"']/g, function(char) {
-        return {
-          "&": "&amp;", "<": "&lt;", ">": "&gt;",
-          '"': "&quot;", "'": "&#39;"
-        }[char];
-      });
-    }
   </script>
 </body>
 </html>
