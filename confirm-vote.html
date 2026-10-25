@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confirm Vote | Civic Bloom</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Arial,sans-serif;background:linear-gradient(135deg,#e6e2ff,#d9f8ee,#ffe5f0);display:flex;align-items:center;justify-content:center;padding:20px;color:#39335d}
+.container{max-width:650px;width:100%;background:#ffffffdc;border-radius:27px;padding:30px;box-shadow:0 12px 35px #5145cd20;text-align:center}
+h1{color:#6253c7}
+p{line-height:1.7;color:#77718e}
+.illustration{font-size:80px;background:linear-gradient(135deg,#ddd6ff,#d8f7e9);padding:25px;border-radius:22px;margin:20px 0}
+.summary{background:#f1eeff;padding:18px;border-radius:16px;margin:20px 0;text-align:left}
+.summary p{margin:9px 0}
+button,a{display:inline-block;border:0;text-decoration:none;background:linear-gradient(90deg,#7966e8,#40bba8);color:white;padding:14px 20px;border-radius:12px;margin:6px;font-weight:bold;font-size:15px;cursor:pointer}
+a.secondary{background:#e9e5ff;color:#5145b5}
+.notice{background:#fff0cd;padding:13px;border-radius:12px;font-size:13px;text-align:left}
+.message{display:none;background:#d9f5e8;color:#176b50;padding:17px;border-radius:14px;margin-top:18px;line-height:1.6}
+</style>
+</head>
+<body>
+<main class="container">
+<div style="font-size:34px">🌿 Civic Bloom</div>
+<div class="illustration">🗳️💜</div>
+<h1>Confirm Your Vote</h1>
+<p>Please review your selection before confirming.</p>
+
+<div class="summary">
+<p><strong>👤 Voter:</strong> Demo Voter</p>
+<p><strong>🗳️ Selected Candidate:</strong> <span id="candidate">Aarav Sharma</span></p>
+<p><strong>📌 Election:</strong> Student Representative (Demo)</p>
+</div>
+
+<div class="notice">⚠️ This is a demonstration page. No real vote is stored or submitted.</div>
+
+<button id="confirmButton" onclick="confirmVote()">✓ Confirm Demo Vote</button>
+<a class="secondary" href="vote.html">← Change Selection</a>
+
+<div id="message" class="message">
+<strong>🎉 Demo Vote Confirmed!</strong>
+<p style="color:#176b50">Your sample selection has been confirmed on this page.</p>
+<a href="voting-status.html">Check Voting Status →</a>
+</div>
+</main>
+
+<script>
+const selected = sessionStorage.getItem("demoCandidate");
+if (selected) {
+  document.getElementById("candidate").textContent = selected;
+}
+
+function confirmVote() {
+  document.getElementById("message").style.display = "block";
+  document.getElementById("confirmButton").disabled = true;
+  document.getElementById("confirmButton").textContent = "Vote Confirmed ✓";
+  sessionStorage.setItem("demoVoteStatus", "Confirmed");
+}
+</script>
+</body>
+</html>
