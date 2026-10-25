@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voter Details | Civic Bloom</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Arial,sans-serif;background:linear-gradient(135deg,#e5e2ff,#d9f8ee,#ffe5f0);color:#39335d;padding:20px}
+.container{max-width:760px;margin:20px auto}
+header,.card{background:#ffffffd9;padding:25px;border-radius:24px;margin-bottom:18px;box-shadow:0 10px 30px #5145cd16}
+header{text-align:center}
+h1{color:#6253c7}
+p{color:#77718e;line-height:1.7}
+.profile{text-align:center;background:linear-gradient(135deg,#ddd6ff,#d9f7eb);padding:22px;border-radius:20px;margin:18px 0}
+.avatar{font-size:70px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.item{background:#f2efff;padding:16px;border-radius:14px;overflow-wrap:anywhere}
+.item strong{display:block;color:#6253c7;font-size:13px;margin-bottom:8px}
+.item span{font-size:15px}
+.tag{display:inline-block;background:#d9f5e8;color:#176b50;padding:8px 13px;border-radius:20px;font-size:13px;font-weight:bold}
+.note{background:#fff0cd;padding:14px;border-radius:12px;font-size:13px;line-height:1.6}
+a{display:inline-block;text-decoration:none;background:linear-gradient(90deg,#7966e8,#40bba8);color:white;padding:14px 18px;border-radius:12px;margin:5px;font-weight:bold}
+a.secondary{background:#e9e5ff;color:#5145b5}
+@media(max-width:500px){body{padding:13px}.grid{grid-template-columns:1fr}.card,header{padding:18px}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div style="font-size:38px">🌿 Civic Bloom</div>
+<h1>Voter Details</h1>
+<p>Your demo voter profile and participation status.</p>
+</header>
+
+<section class="card">
+<div class="profile">
+<div class="avatar">🙋✨</div>
+<h2>Voter Profile</h2>
+<span class="tag" id="voteTag">📋 Demo Status: Not Confirmed</span>
+</div>
+
+<div class="grid">
+<div class="item"><strong>👤 VOTER NAME</strong><span>Demo Voter</span></div>
+<div class="item"><strong>🪪 VOTER ID</strong><span>VOT-12345 (Sample)</span></div>
+<div class="item"><strong>🎂 ELIGIBILITY</strong><span>18+ (Demo)</span></div>
+<div class="item"><strong>🗳️ VOTING STATUS</strong><span id="voteStatus">Not Confirmed</span></div>
+</div>
+
+<h2 style="color:#6253c7;margin-top:25px">✨ Participation</h2>
+<p>This profile demonstrates how a voter could view their details and voting progress.</p>
+<div class="note">🔒 Privacy note: This is a static demo profile. It does not retrieve real personal information or store real voting records.</div>
+</section>
+
+<section class="card" style="text-align:center">
+<a href="voting-status.html">← Voting Status</a>
+<a href="voter-dashboard.html" class="secondary">Voter Dashboard</a>
+<a href="results.html" class="secondary">View Results</a>
+</section>
+</div>
+
+<script>
+if(sessionStorage.getItem("demoVoteStatus")==="Confirmed"){
+document.getElementById("voteTag").textContent="✅ Demo Vote Confirmed";
+document.getElementById("voteStatus").textContent="Confirmed (Demo)";
+}
+</script>
+</body>
+</html>
