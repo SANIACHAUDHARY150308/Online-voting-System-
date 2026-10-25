@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candidate Details | Civic Bloom</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Arial,sans-serif;background:linear-gradient(135deg,#e7e3ff,#ffe6f1,#dcf8ee);color:#39335d;padding:24px}
+.container{max-width:760px;margin:25px auto}
+header,.card{background:#ffffffd9;padding:25px;border-radius:24px;margin-bottom:20px;box-shadow:0 10px 30px #5145cd16}
+header{text-align:center}
+h1{color:#6253c7;margin:10px 0}
+p{color:#77718e;line-height:1.7}
+.profile{text-align:center;background:linear-gradient(135deg,#e5dfff,#fce4f0);padding:22px;border-radius:20px;margin:18px 0}
+.avatar{font-size:70px}
+.tag{display:inline-block;background:#d9f5e8;color:#176b50;padding:8px 13px;border-radius:20px;font-size:13px;font-weight:bold}
+.info{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.item{background:#f4f1ff;padding:16px;border-radius:14px;overflow-wrap:anywhere}
+.item strong{display:block;color:#6253c7;margin-bottom:8px;font-size:13px}
+.item span{font-size:15px}
+a{display:inline-block;text-decoration:none;background:linear-gradient(90deg,#7966e8,#a27be9);color:white;padding:14px 20px;border-radius:12px;margin:5px;font-weight:bold}
+a.secondary{background:#e9e5ff;color:#5145b5}
+.note{background:#fff1cf;padding:14px;border-radius:12px;font-size:13px}
+@media(max-width:500px){body{padding:14px}.info{grid-template-columns:1fr}.card,header{padding:19px}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div style="font-size:38px">🌷 Civic Bloom</div>
+<h1>Candidate Details</h1>
+<p>Your profile at a glance</p>
+</header>
+
+<section class="card">
+<div class="profile">
+<div class="avatar">🧑‍💼✨</div>
+<h2>Candidate Profile</h2>
+<span class="tag">⏳ Pending Verification</span>
+</div>
+
+<div class="info">
+<div class="item"><strong>👤 CANDIDATE NAME</strong><span>Demo Candidate</span></div>
+<div class="item"><strong>🗳️ CANDIDATE ID</strong><span>CAN-001</span></div>
+<div class="item"><strong>🏷️ GROUP</strong><span>Community Progress</span></div>
+<div class="item"><strong>📋 APPLICATION</strong><span>Submitted (Demo)</span></div>
+</div>
+
+<h2 style="color:#6253c7;margin-top:25px">💡 My Vision</h2>
+<p>To encourage student participation, teamwork, transparency, and positive change in our community.</p>
+
+<div class="note">ℹ️ These are sample details for the project demonstration. They are not retrieved from a database.</div>
+</section>
+
+<section class="card" style="text-align:center">
+<a href="candidate-dashboard.html">← Candidate Dashboard</a>
+<a href="candidate-verification.html" class="secondary">View Verification</a>
+</section>
+</div>
+</body>
+</html>
