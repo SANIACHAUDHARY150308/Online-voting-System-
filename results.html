@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Election Results | Civic Bloom</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#e9e7ff,#e2f7f3,#fff0f5);color:#302d50;min-height:100vh;padding:24px}
+.container{max-width:850px;margin:auto}
+header,.card{background:rgba(255,255,255,.88);padding:24px;border-radius:22px;margin-bottom:18px;box-shadow:0 8px 25px #554b8115}
+header{text-align:center}
+h1{color:#6253c7;margin:8px 0}
+.subtitle{color:#77718e;line-height:1.6}
+.card h2{margin-top:0}
+.result{margin:24px 0}
+.person{display:flex;justify-content:space-between;gap:12px;margin-bottom:9px;font-weight:bold}
+.track{height:13px;background:#eeeafb;border-radius:20px;overflow:hidden}
+.bar{height:100%;border-radius:20px}
+.purple{background:linear-gradient(90deg,#9384f5,#6856d9);width:45%}
+.pink{background:linear-gradient(90deg,#ffb5d1,#ed76aa);width:35%}
+.teal{background:linear-gradient(90deg,#8ce5d4,#40bba8);width:20%}
+.note{background:#f2efff;padding:14px;border-radius:12px;line-height:1.6;font-size:14px}
+a.button{display:inline-block;text-decoration:none;background:#6856d9;color:white;padding:13px 20px;border-radius:12px;margin:5px;font-weight:bold}
+a.secondary{background:#e9e6ff;color:#5145b5}
+footer{text-align:center;color:#77718e;font-size:13px;margin-top:25px}
+@media(max-width:500px){body{padding:14px}.card,header{padding:18px}.person{font-size:14px}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div style="font-size:42px">📊</div>
+<h1>Election Results</h1>
+<p class="subtitle">Civic Bloom · Online Voting System</p>
+</header>
+
+<section class="card">
+<h2>🏆 Sample Results</h2>
+<p class="subtitle">These illustrative results demonstrate how election results could be displayed.</p>
+
+<div class="result">
+<div class="person"><span>🌟 Aarav Sharma</span><span>45%</span></div>
+<div class="track"><div class="bar purple"></div></div>
+</div>
+
+<div class="result">
+<div class="person"><span>🌸 Meera Patel</span><span>35%</span></div>
+<div class="track"><div class="bar pink"></div></div>
+</div>
+
+<div class="result">
+<div class="person"><span>🌿 Rohan Desai</span><span>20%</span></div>
+<div class="track"><div class="bar teal"></div></div>
+</div>
+
+<div class="note">ℹ️ Demo only: These are fictional percentages, not actual votes. The page does not retrieve or store real voting data.</div>
+</section>
+
+<section class="card" style="text-align:center">
+<h2>What would you like to do next?</h2>
+<a class="button" href="voter-dashboard.html">Voter Dashboard</a>
+<a class="button secondary" href="candidate-dashboard.html">Candidate Dashboard</a>
+<a class="button secondary" href="thankyou.html">Exit</a>
+</section>
+
+<footer>Made with 💜 for Civic Bloom</footer>
+</div>
+</body>
+</html>
