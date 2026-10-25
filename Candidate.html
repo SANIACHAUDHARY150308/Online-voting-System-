@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candidate Registration | Civic Bloom</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      padding: 24px;
+      color: #292253;
+      background: linear-gradient(135deg, #eee9ff, #dceaff, #ffe5f2);
+    }
+
+    header, main { max-width: 850px; margin: auto; }
+
+    header a {
+      color: #6650d9;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    main { margin-top: 35px; }
+
+    .tag {
+      display: inline-block;
+      background: #ffffffb8;
+      color: #7658e8;
+      padding: 9px 14px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    h1 { font-size: clamp(30px, 6vw, 44px); margin: 18px 0 10px; }
+    .intro { color: #68617f; line-height: 1.6; margin-bottom: 25px; }
+
+    form {
+      background: #ffffffd9;
+      border: 1px solid white;
+      padding: 28px;
+      border-radius: 24px;
+      box-shadow: 0 15px 40px #6250a51a;
+    }
+
+    label { display: block; margin: 17px 0 8px; font-weight: bold; }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #d9d3f3;
+      border-radius: 11px;
+      background: #fff;
+      font: inherit;
+      color: #292253;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: 2px solid #a99bf5;
+      border-color: #7658e8;
+    }
+
+    button, .button {
+      display: inline-block;
+      border: 0;
+      border-radius: 12px;
+      padding: 14px 22px;
+      background: linear-gradient(100deg, #7658e8, #4d79e8);
+      color: white;
+      font-weight: bold;
+      font-size: 15px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    button { width: 100%; margin-top: 23px; }
+
+    #message {
+      display: none;
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 12px;
+      background: #e7f8ef;
+      color: #17653c;
+      line-height: 1.6;
+    }
+
+    .note { font-size: 13px; color: #77708f; margin-top: 16px; }
+
+    footer { text-align: center; margin-top: 30px; color: #77708f; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="role.html">← Back to Select Role</a>
+  </header>
+
+  <main>
+    <span class="tag">STEP 03 · CANDIDATE</span>
+    <h1>Candidate Registration ✨</h1>
+    <p class="intro">Introduce yourself and share your vision with the voters.</p>
+
+    <form id="candidateForm">
+      <label for="name">Full Name</label>
+      <input id="name" name="name" type="text" placeholder="Enter your full name" required>
+
+      <label for="email">Email Address</label>
+      <input id="email" name="email" type="email" placeholder="you@example.com" required>
+
+      <label for="group">Party / Group Name</label>
+      <input id="group" name="group" type="text" placeholder="Enter group name" required>
+
+      <label for="statement">Your Vision</label>
+      <textarea id="statement" name="statement" rows="4" placeholder="What would you like to achieve?" required></textarea>
+
+      <label for="password">Create Password</label>
+      <input id="password" name="password" type="password" minlength="6" placeholder="At least 6 characters" required>
+
+      <button type="submit">Register as Candidate →</button>
+
+      <p class="note">Student project demonstration only. Do not enter real personal information or passwords.</p>
+
+      <div id="message" role="status"></div>
+    </form>
+  </main>
+
+  <footer>Civic Bloom · Online Voting System Demonstration</footer>
+
+  <script>
+    document.getElementById("candidateForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const group = document.getElementById("group").value.trim();
+      const message = document.getElementById("message");
+
+      message.innerHTML =
+        "<strong>Registration demonstration complete!</strong><br>" +
+        "Welcome, " + escapeText(name) + ".<br>" +
+        "Group: " + escapeText(group) +
+        "<br><br><a href='candidate-dashboard.html'>Continue to Candidate Dashboard →</a>";
+
+      message.style.display = "block";
+    });
+
+    function escapeText(value) {
+      return value.replace(/[&<>"']/g, function(char) {
+        return {
+          "&": "&amp;", "<": "&lt;", ">": "&gt;",
+          '"': "&quot;", "'": "&#39;"
+        }[char];
+      });
+    }
+  </script>
+</body>
+</html>
