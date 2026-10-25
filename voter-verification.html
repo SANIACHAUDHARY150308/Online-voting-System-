@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voter Verification | Civic Bloom</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Arial,sans-serif;background:linear-gradient(135deg,#e5e2ff,#d9f8ed,#ffe5f0);color:#39335d;display:flex;align-items:center;justify-content:center;padding:18px}
+.container{width:100%;max-width:700px;background:#ffffffd9;padding:28px;border-radius:26px;box-shadow:0 12px 35px #5145cd20;text-align:center}
+h1{color:#6253c7}
+p{color:#77718e;line-height:1.7}
+.art{font-size:78px;padding:25px;margin:18px 0;background:linear-gradient(135deg,#ddd6ff,#d8f7e9);border-radius:22px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:25px 0}
+.step{background:#f0edff;padding:14px 6px;border-radius:14px;font-size:13px}
+.step.active{background:#d9f5e8;color:#176b50;font-weight:bold}
+.status{background:#fff0cd;color:#805900;padding:18px;border-radius:16px;line-height:1.7;margin:20px 0}
+a{display:inline-block;text-decoration:none;background:linear-gradient(90deg,#7966e8,#40bba8);color:white;padding:14px 18px;border-radius:12px;margin:5px;font-weight:bold}
+a.secondary{background:#e9e5ff;color:#5145b5}
+@media(max-width:450px){.container{padding:18px}.steps{gap:5px}.step{font-size:11px;padding:10px 3px}.art{font-size:60px}}
+</style>
+</head>
+<body>
+<main class="container">
+<div style="font-size:35px">🌿 Civic Bloom</div>
+<div class="art">🪪 🔍 ✨</div>
+<h1>Voter Verification</h1>
+<p>Verification is an important step before accessing the voting dashboard.</p>
+
+<div class="steps">
+<div class="step active">✓<br>Registration</div>
+<div class="step active">🔍<br>Verification</div>
+<div class="step">🗳️<br>Voting</div>
+</div>
+
+<div class="status">
+<strong>⏳ Demo Verification Status: Pending</strong><br>
+This page demonstrates the verification stage. No real identity checks are performed.
+</div>
+
+<p>Continue to the dashboard to explore the voting demonstration.</p>
+<a href="voter-dashboard.html">Continue to Voter Dashboard →</a>
+<br>
+<a class="secondary" href="voter-login.html">← Back to Login</a>
+</main>
+</body>
+</html>
