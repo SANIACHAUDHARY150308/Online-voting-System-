@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voter Dashboard | Civic Bloom</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      padding: 24px;
+      color: #292253;
+      background: linear-gradient(135deg, #eee9ff, #dceaff, #ffe5f2);
+    }
+
+    header, main { max-width: 1000px; margin: auto; }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    a { color: #6650d9; text-decoration: none; font-weight: bold; }
+
+    main { margin-top: 40px; }
+
+    .tag {
+      display: inline-block;
+      padding: 9px 14px;
+      background: #ffffffb8;
+      border-radius: 25px;
+      color: #4d79e8;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    h1 { font-size: clamp(30px, 6vw, 46px); margin: 16px 0 10px; }
+
+    .intro { color: #68617f; line-height: 1.7; margin-bottom: 28px; }
+
+    .welcome {
+      padding: 25px;
+      border-radius: 24px;
+      background: linear-gradient(110deg, #4d79e8, #7658e8);
+      color: white;
+      margin-bottom: 25px;
+    }
+
+    .welcome p { margin-top: 10px; line-height: 1.6; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 24px;
+      background: #ffffffd9;
+      border: 1px solid white;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px #6250a51a;
+    }
+
+    .icon { font-size: 35px; margin-bottom: 14px; }
+
+    h2 { font-size: 19px; margin-bottom: 10px; }
+
+    .card p { color: #68617f; line-height: 1.6; font-size: 14px; }
+
+    .button {
+      display: inline-block;
+      margin-top: 17px;
+      padding: 13px 18px;
+      background: linear-gradient(100deg, #7658e8, #4d79e8);
+      color: white;
+      border-radius: 11px;
+    }
+
+    .actions { margin-top: 25px; }
+
+    footer { text-align: center; margin-top: 45px; color: #77708f; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">✿ civicbloom</a>
+    <a href="role.html">← Select Role</a>
+  </header>
+
+  <main>
+    <span class="tag">VOTER PORTAL</span>
+    <h1>Your Dashboard 🗳️</h1>
+    <p class="intro">Welcome! Explore the candidates and learn how the voting process works.</p>
+
+    <section class="welcome">
+      <h2>Welcome, Voter!</h2>
+      <p>Your voice matters. Review the sample candidates before making your choice in this demonstration.</p>
+    </section>
+
+    <section class="cards">
+      <article class="card">
+        <div class="icon">👥</div>
+        <h2>View Candidates</h2>
+        <p>Explore the sample candidates and their ideas before voting.</p>
+        <a class="button" href="vote.html">View Candidates →</a>
+      </article>
+
+      <article class="card">
+        <div class="icon">🗳️</div>
+        <h2>Cast Your Vote</h2>
+        <p>Try the sample voting interface and confirm your selection.</p>
+        <a class="button" href="vote.html">Go to Voting →</a>
+      </article>
+
+      <article class="card">
+        <div class="icon">📊</div>
+        <h2>Election Results</h2>
+        <p>Explore the sample election results and statistics.</p>
+        <a class="button" href="results.html">View Results →</a>
+      </article>
+
+      <article class="card">
+        <div class="icon">🪪</div>
+        <h2>Voter Information</h2>
+        <p>This demonstration does not store real voter information.</p>
+        <a class="button" href="thankyou.html">Finish →</a>
+      </article>
+    </section>
+  </main>
+
+  <footer>Civic Bloom · Online Voting System Demonstration</footer>
+</body>
+</html>
