@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voting Statistics</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #e9ddff, #d9edff, #ffe0f0);
+  color: #30265c;
+  min-height: 100vh;
+  padding: 24px 14px;
+}
+.container { max-width: 850px; margin: auto; }
+header { text-align: center; padding: 15px 5px; }
+.emoji { font-size: 48px; }
+h1 { margin: 10px 0; color: #6341b8; }
+.subtitle { color: #655b82; line-height: 1.6; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 14px;
+  margin: 24px 0;
+}
+.card {
+  background: rgba(255,255,255,0.82);
+  padding: 20px 14px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 7px 20px #7460a51a;
+}
+.number { font-size: 30px; font-weight: bold; color: #7147c8; }
+.label { margin-top: 8px; color: #665c80; font-size: 14px; }
+.panel {
+  background: rgba(255,255,255,0.86);
+  border-radius: 22px;
+  padding: 22px;
+  margin: 18px 0;
+  box-shadow: 0 7px 20px #7460a51a;
+}
+h2 { font-size: 20px; margin-top: 0; }
+.bar-row { margin: 20px 0; }
+.bar-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.track {
+  height: 13px;
+  background: #eee8fa;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.bar { height: 100%; border-radius: 20px; }
+.purple { background: #9065e8; width: 45%; }
+.blue { background: #58a9ed; width: 35%; }
+.pink { background: #ee83bb; width: 20%; }
+.note {
+  background: #f2ebff;
+  padding: 13px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.buttons { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0; }
+a {
+  text-decoration: none;
+  background: #7047c5;
+  color: white;
+  padding: 13px 20px;
+  border-radius: 13px;
+  text-align: center;
+}
+a.secondary { background: #fff; color: #6742b2; }
+footer { text-align: center; font-size: 12px; padding: 20px; color: #716786; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="emoji">📊</div>
+    <h1>Voting Statistics</h1>
+    <p class="subtitle">A visual overview of the election results.</p>
+  </header>
+
+  <div class="grid">
+    <div class="card">
+      <div class="number">3</div>
+      <div class="label">Candidates</div>
+    </div>
+    <div class="card">
+      <div class="number">100</div>
+      <div class="label">Sample Votes</div>
+    </div>
+    <div class="card">
+      <div class="number">100%</div>
+      <div class="label">Votes Represented</div>
+    </div>
+  </div>
+
+  <section class="panel">
+    <h2>🏆 Vote Share</h2>
+
+    <div class="bar-row">
+      <div class="bar-label"><span>Aarav Sharma</span><strong>45%</strong></div>
+      <div class="track"><div class="bar purple"></div></div>
+    </div>
+
+    <div class="bar-row">
+      <div class="bar-label"><span>Priya Patel</span><strong>35%</strong></div>
+      <div class="track"><div class="bar blue"></div></div>
+    </div>
+
+    <div class="bar-row">
+      <div class="bar-label"><span>Rohan Verma</span><strong>20%</strong></div>
+      <div class="track"><div class="bar pink"></div></div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>💡 Key Insights</h2>
+    <p>🥇 Aarav Sharma has the highest sample vote share.</p>
+    <p>📈 Priya Patel is in second place.</p>
+    <p>🗳️ The sample results represent 100 votes in total.</p>
+    <div class="note">
+      Note: These figures are fictional demonstration data. They are not live votes or official election results.
+    </div>
+  </section>
+
+  <div class="buttons">
+    <a href="thankyou.html">Finish Project →</a>
+    <a class="secondary" href="results.html">← Back to Results</a>
+  </div>
+
+  <footer>Online Voting System · Statistics Dashboard</footer>
+</div>
+</body>
+</html>
