@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candidate Dashboard | Civic Bloom</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      padding: 24px;
+      color: #292253;
+      background: linear-gradient(135deg, #eee9ff, #dceaff, #ffe5f2);
+    }
+
+    header, main { max-width: 1000px; margin: auto; }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    a { color: #6650d9; text-decoration: none; font-weight: bold; }
+
+    .tag {
+      display: inline-block;
+      padding: 9px 14px;
+      background: #ffffffb8;
+      border-radius: 25px;
+      color: #7658e8;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    main { margin-top: 40px; }
+
+    h1 { font-size: clamp(30px, 6vw, 46px); margin: 16px 0 10px; }
+
+    .intro { color: #68617f; line-height: 1.7; margin-bottom: 28px; }
+
+    .welcome-card {
+      padding: 25px;
+      border-radius: 24px;
+      background: linear-gradient(110deg, #7658e8, #4d79e8);
+      color: white;
+      margin-bottom: 25px;
+    }
+
+    .welcome-card p { margin-top: 10px; line-height: 1.6; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 24px;
+      background: #ffffffd9;
+      border: 1px solid white;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px #6250a51a;
+    }
+
+    .icon { font-size: 35px; margin-bottom: 14px; }
+
+    h2 { font-size: 19px; margin-bottom: 10px; }
+
+    .card p { color: #68617f; line-height: 1.6; font-size: 14px; }
+
+    .status {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 7px 11px;
+      border-radius: 20px;
+      background: #fff0ce;
+      color: #855700;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .actions { margin-top: 25px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .button {
+      display: inline-block;
+      padding: 13px 20px;
+      background: #7658e8;
+      color: white;
+      border-radius: 11px;
+    }
+
+    .button.secondary { background: white; color: #6650d9; }
+
+    footer { text-align: center; margin-top: 45px; color: #77708f; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">✿ civicbloom</a>
+    <a href="role.html">← Select Role</a>
+  </header>
+
+  <main>
+    <span class="tag">CANDIDATE PORTAL</span>
+    <h1>Your Dashboard ✨</h1>
+    <p class="intro">Manage your candidate profile and follow your election journey.</p>
+
+    <section class="welcome-card">
+      <h2>Welcome, Candidate!</h2>
+      <p>This is your personal dashboard for the Civic Bloom election demonstration.</p>
+    </section>
+
+    <section class="cards">
+      <article class="card">
+        <div class="icon">👤</div>
+        <h2>Candidate Details</h2>
+        <p>Review the information entered during your registration.</p>
+        <span class="status">Demo profile</span>
+      </article>
+
+      <article class="card">
+        <div class="icon">📋</div>
+        <h2>Application Status</h2>
+        <p>Your candidate application is awaiting verification in this demonstration.</p>
+        <span class="status">Pending verification</span>
+      </article>
+
+      <article class="card">
+        <div class="icon">📊</div>
+        <h2>Election Results</h2>
+        <p>Visit the results page to explore sample election statistics.</p>
+        <div style="margin-top:15px">
+          <a href="results.html">View Results →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="icon">💡</div>
+        <h2>Your Vision</h2>
+        <p>Share your ideas and the positive changes you hope to bring.</p>
+        <span class="status">Profile overview</span>
+      </article>
+    </section>
+
+    <div class="actions">
+      <a class="button" href="results.html">View Election Results →</a>
+      <a class="button secondary" href="thankyou.html">Exit Dashboard</a>
+    </div>
+  </main>
+
+  <footer>Civic Bloom · Online Voting System Demonstration</footer>
+</body>
+</html>
