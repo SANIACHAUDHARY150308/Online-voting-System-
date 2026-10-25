@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civic Bloom | Online Voting System</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      color: #252052;
+      background: linear-gradient(135deg, #eee9ff, #dceaff, #ffe5f2);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 8%;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      color: #6650d9;
+    }
+
+    header a {
+      text-decoration: none;
+      color: #5542bd;
+      font-weight: bold;
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: auto;
+      min-height: 75vh;
+      padding: 55px 8%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 35px;
+      flex-wrap: wrap;
+    }
+
+    .content {
+      flex: 1 1 300px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 9px 15px;
+      border-radius: 30px;
+      background: #ffffffb8;
+      color: #6650d9;
+      margin-bottom: 22px;
+      font-size: 14px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 6vw, 62px);
+      line-height: 1.1;
+      margin-bottom: 22px;
+    }
+
+    h1 span {
+      color: #7658e8;
+    }
+
+    p {
+      color: #615c7d;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 15px 25px;
+      border-radius: 12px;
+      background: linear-gradient(100deg, #7658e8, #4d79e8);
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 8px 20px #7658e844;
+    }
+
+    .art {
+      flex: 1 1 260px;
+      text-align: center;
+      padding: 35px;
+      background: #ffffffa8;
+      border: 1px solid #ffffff;
+      border-radius: 35px;
+      box-shadow: 0 20px 50px #6250a51a;
+    }
+
+    .emoji {
+      font-size: 105px;
+      margin-bottom: 15px;
+    }
+
+    .art h2 {
+      margin-bottom: 12px;
+      color: #5e49c8;
+    }
+
+    .features {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 0 8% 40px;
+    }
+
+    .feature {
+      background: #ffffffb8;
+      padding: 18px 24px;
+      border-radius: 15px;
+      color: #5542bd;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 22px;
+      font-size: 13px;
+      color: #77708f;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">✿ civicbloom</div>
+    <a href="#about">About us</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="content">
+        <div class="tag">✦ YOUR VOICE MATTERS</div>
+        <h1>Your voice.<br>Your choice.<br><span>Your future.</span></h1>
+        <p>
+          Welcome to Civic Bloom, a simple and accessible
+          online voting demonstration. Explore the election
+          process and make every vote count.
+        </p>
+        <a class="button" href="role.html">Get Started&nbsp; →</a>
+      </div>
+
+      <div class="art">
+        <div class="emoji">🗳️</div>
+        <h2>Every Vote Counts</h2>
+        <p>Fair choices begin with an informed voice.</p>
+        <div>💜 &nbsp; 🗳️ &nbsp; 💙</div>
+      </div>
+    </section>
+
+    <section class="features" id="about">
+      <div class="feature">🔒 Secure Design</div>
+      <div class="feature">✨ Simple Process</div>
+      <div class="feature">📊 Clear Results</div>
+    </section>
+  </main>
+
+  <footer>
+    Online Voting System · Student Project Demonstration
+  </footer>
+</body>
+</html>
