@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voting Status | Civic Bloom</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Arial,sans-serif;background:linear-gradient(135deg,#e7e3ff,#d9f8ee,#ffe5f0);display:flex;align-items:center;justify-content:center;padding:20px;color:#39335d}
+.container{max-width:700px;width:100%;background:#ffffffdc;border-radius:27px;padding:30px;box-shadow:0 12px 35px #5145cd20;text-align:center}
+h1{color:#6253c7}
+p{line-height:1.7;color:#77718e}
+.illustration{font-size:80px;background:linear-gradient(135deg,#ddd6ff,#d8f7e9);padding:25px;border-radius:22px;margin:20px 0}
+.status{padding:20px;border-radius:17px;background:#fff0cd;color:#805900;line-height:1.7;margin:20px 0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0}
+.step{background:#f0edff;padding:15px 5px;border-radius:14px;font-size:13px}
+.step.active{background:#d9f5e8;color:#176b50;font-weight:bold}
+a{display:inline-block;text-decoration:none;background:linear-gradient(90deg,#7966e8,#40bba8);color:white;padding:14px 18px;border-radius:12px;margin:5px;font-weight:bold}
+a.secondary{background:#e9e5ff;color:#5145b5}
+.note{font-size:13px;background:#f4f1ff;padding:13px;border-radius:12px}
+@media(max-width:450px){.container{padding:18px}.steps{gap:5px}.step{font-size:11px;padding:12px 3px}.illustration{font-size:60px}}
+</style>
+</head>
+<body>
+<main class="container">
+<div style="font-size:35px">🌿 Civic Bloom</div>
+<div class="illustration">🗳️✅</div>
+<h1>Your Voting Status</h1>
+<p>Check the status of your demo voting activity.</p>
+
+<div id="status" class="status">
+<strong>ℹ️ Status: Not Yet Confirmed</strong><br>
+Complete the demo confirmation step to view your status.
+</div>
+
+<div class="steps">
+<div class="step active">✓<br>Voter Access</div>
+<div class="step" id="confirmStep">🗳️<br>Vote Confirmation</div>
+<div class="step" id="completeStep">🏁<br>Completed</div>
+</div>
+
+<div class="note">This is a front-end demonstration. The status is stored only in this browser session and is not a real election record.</div>
+
+<div style="margin-top:22px">
+<a href="voter-details.html">View Voter Details →</a>
+<a href="voter-dashboard.html" class="secondary">Voter Dashboard</a>
+</div>
+</main>
+
+<script>
+const confirmed = sessionStorage.getItem("demoVoteStatus") === "Confirmed";
+const status = document.getElementById("status");
+
+if (confirmed) {
+  status.style.background = "#d9f5e8";
+  status.style.color = "#176b50";
+  status.innerHTML = "<strong>🎉 Status: Demo Vote Confirmed</strong><br>Your sample voting step has been completed in this browser session.";
+  document.getElementById("confirmStep").classList.add("active");
+  document.getElementById("completeStep").classList.add("active");
+}
+</script>
+</body>
+</html>
