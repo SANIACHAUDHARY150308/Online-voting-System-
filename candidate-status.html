@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candidate Status | Civic Bloom</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Arial,sans-serif;background:linear-gradient(135deg,#e7e3ff,#ffe5f0,#dcf8ef);color:#39335d;padding:22px}
+.container{max-width:720px;margin:25px auto}
+header,.card{background:#ffffffd9;padding:25px;border-radius:24px;margin-bottom:20px;box-shadow:0 10px 30px #5145cd16}
+header{text-align:center}
+h1{color:#6253c7}
+p{color:#77718e;line-height:1.7}
+.hero{font-size:75px;background:linear-gradient(135deg,#ded7ff,#d7f7e9);padding:20px;border-radius:22px;text-align:center;margin:18px 0}
+.status{background:#fff0cd;color:#805900;padding:18px;border-radius:16px;text-align:center;line-height:1.7}
+.progress{height:13px;background:#ece8fa;border-radius:20px;overflow:hidden;margin:16px 0}
+.fill{height:100%;width:60%;background:linear-gradient(90deg,#8d7af0,#48c6a9);border-radius:20px}
+.steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:20px}
+.step{padding:15px 8px;text-align:center;background:#f1eeff;border-radius:15px;font-size:13px}
+.step.active{background:#d9f5e8;color:#176b50;font-weight:bold}
+a{display:inline-block;text-decoration:none;background:linear-gradient(90deg,#7966e8,#a27be9);color:white;padding:14px 20px;border-radius:12px;margin:5px;font-weight:bold}
+a.secondary{background:#e9e5ff;color:#5145b5}
+@media(max-width:480px){body{padding:13px}.card,header{padding:18px}.steps{gap:5px}.step{font-size:11px;padding:12px 4px}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div style="font-size:38px">🌷 Civic Bloom</div>
+<h1>Candidate Application Status</h1>
+<p>Track your candidate application progress.</p>
+</header>
+
+<section class="card">
+<div class="hero">🪪 🔍 ✨</div>
+<div class="status">
+<strong>⏳ Current Status: Pending Verification</strong>
+<p style="color:#805900;margin-bottom:0">Your application is awaiting review in this demonstration.</p>
+</div>
+
+<h2 style="color:#6253c7;margin-top:25px">📈 Application Progress</h2>
+<div class="progress"><div class="fill"></div></div>
+<div class="steps">
+<div class="step active">✓<br>Registration</div>
+<div class="step active">🔍<br>Under Review</div>
+<div class="step">🏆<br>Approved</div>
+</div>
+<p style="margin-top:20px">This sample status is for demonstration only. No real verification or approval takes place.</p>
+</section>
+
+<section class="card" style="text-align:center">
+<a href="candidate-details.html">View Candidate Details</a>
+<a href="candidate-dashboard.html" class="secondary">Dashboard</a>
+<a href="results.html" class="secondary">Results</a>
+</section>
+</div>
+</body>
+</html>
