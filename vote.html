@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cast Your Vote | Civic Bloom</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      padding: 24px;
+      color: #292253;
+      background: linear-gradient(135deg, #eee9ff, #dceaff, #ffe5f2);
+    }
+
+    header, main { max-width: 900px; margin: auto; }
+
+    header a {
+      color: #6650d9;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    main { margin-top: 35px; }
+
+    .tag {
+      display: inline-block;
+      background: #ffffffb8;
+      color: #6650d9;
+      padding: 9px 14px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    h1 { font-size: clamp(30px, 6vw, 44px); margin: 18px 0 10px; }
+    .intro { color: #68617f; line-height: 1.6; margin-bottom: 25px; }
+
+    .notice {
+      background: #fff4d8;
+      color: #79530b;
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 22px;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .candidates {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .candidate {
+      background: #ffffffd9;
+      border: 2px solid transparent;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 12px 30px #6250a51a;
+    }
+
+    .candidate:has(input:checked) {
+      border-color: #7658e8;
+      background: #f5f1ff;
+    }
+
+    .avatar { font-size: 45px; margin-bottom: 14px; }
+    h2 { font-size: 20px; margin-bottom: 8px; }
+    .group { color: #7658e8; font-weight: bold; font-size: 13px; margin-bottom: 12px; }
+    .description { color: #68617f; line-height: 1.6; font-size: 14px; }
+
+    .choose {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 20px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #f0edff;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .choose input { width: 18px; height: 18px; accent-color: #7658e8; }
+
+    button {
+      width: 100%;
+      margin-top: 24px;
+      padding: 15px;
+      border: 0;
+      border-radius: 12px;
+      background: linear-gradient(100deg, #7658e8, #4d79e8);
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:disabled { opacity: .5; cursor: not-allowed; }
+
+    #message {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      background: #e7f8ef;
+      color: #17653c;
+      border-radius: 14px;
+      line-height: 1.7;
+    }
+
+    #message a { color: #17653c; font-weight: bold; }
+    footer { text-align: center; margin-top: 35px; color: #77708f; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="voter-dashboard.html">← Back to Voter Dashboard</a>
+  </header>
+
+  <main>
+    <span class="tag">STEP 04 · VOTING BOOTH</span>
+    <h1>Make Your Choice 🗳️</h1>
+    <p class="intro">Review the sample candidates and select one option below.</p>
+
+    <div class="notice">
+      <strong>Demo mode:</strong> These are fictional candidates. Your selection is not submitted to a real election or saved to a database.
+    </div>
+
+    <form id="voteForm">
+      <section class="candidates">
+        <article class="candidate">
+          <div class="avatar">🌱</div>
+          <h2>Aarav Sharma</h2>
+          <p class="group">Green Future Group</p>
+          <p class="description">Focused on sustainability, green spaces, and community projects.</p>
+          <label class="choose">
+            <input type="radio" name="candidate" value="Aarav Sharma" required>
+            Select Candidate
+          </label>
+        </article>
+
+        <article class="candidate">
+          <div class="avatar">💡</div>
+          <h2>Meera Patel</h2>
+          <p class="group">Bright Ideas Group</p>
+          <p class="description">Focused on student activities, learning opportunities, and innovation.</p>
+          <label class="choose">
+            <input type="radio" name="candidate" value="Meera Patel" required>
+            Select Candidate
+          </label>
+        </article>
+
+        <article class="candidate">
+          <div class="avatar">🤝</div>
+          <h2>Rohan Desai</h2>
+          <p class="group">Together Group</p>
+          <p class="description">Focused on inclusion, teamwork, and accessible campus events.</p>
+          <label class="choose">
+            <input type="radio" name="candidate" value="Rohan Desai" required>
+            Select Candidate
+          </label>
+        </article>
+      </section>
+
+      <button type="submit">Confirm My Selection →</button>
+    </form>
+
+    <div id="message" role="status" aria-live="polite"></div>
+  </main>
+
+  <footer>Civic Bloom · Online Voting System Demonstration</footer>
+
+  <script>
+    document.getElementById("voteForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const selected = document.querySelector('input[name="candidate"]:checked');
+
+      if (!selected) return;
+
+      const confirmed = confirm(
+        "You selected " + selected.value +
+        ". Confirm this sample vote?"
+      );
+
+      if (confirmed) {
+        const message = document.getElementById("message");
+        message.innerHTML =
+          "<strong>🎉 Sample vote confirmed!</strong><br>" +
+          "Your demonstration selection: " + selected.value +
+          "<br><br><a href='results.html'>View Sample Results →</a>";
+
+        message.style.display = "block";
+        document.querySelectorAll('input[name="candidate"]').forEach(function(input) {
+          input.disabled = true;
+        });
+        document.querySelector('button[type="submit"]').disabled = true;
+      }
+    });
+  </script>
+</body>
+</html>
