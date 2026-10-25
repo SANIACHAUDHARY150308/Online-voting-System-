@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voter Registration | Civic Bloom</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      padding: 24px;
+      color: #292253;
+      background: linear-gradient(135deg, #eee9ff, #dceaff, #ffe5f2);
+    }
+
+    header, main { max-width: 850px; margin: auto; }
+
+    header a {
+      color: #6650d9;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    main { margin-top: 35px; }
+
+    .tag {
+      display: inline-block;
+      background: #ffffffb8;
+      color: #4d79e8;
+      padding: 9px 14px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    h1 { font-size: clamp(30px, 6vw, 44px); margin: 18px 0 10px; }
+    .intro { color: #68617f; line-height: 1.6; margin-bottom: 25px; }
+
+    form {
+      background: #ffffffd9;
+      border: 1px solid white;
+      padding: 28px;
+      border-radius: 24px;
+      box-shadow: 0 15px 40px #6250a51a;
+    }
+
+    label { display: block; margin: 17px 0 8px; font-weight: bold; }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #d9d3f3;
+      border-radius: 11px;
+      background: white;
+      font: inherit;
+      color: #292253;
+    }
+
+    button {
+      width: 100%;
+      border: 0;
+      border-radius: 12px;
+      padding: 14px 22px;
+      margin-top: 23px;
+      background: linear-gradient(100deg, #7658e8, #4d79e8);
+      color: white;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    #message {
+      display: none;
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 12px;
+      background: #e7f8ef;
+      color: #17653c;
+      line-height: 1.7;
+    }
+
+    .note { font-size: 13px; color: #77708f; margin-top: 16px; }
+    footer { text-align: center; margin-top: 30px; color: #77708f; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="role.html">← Back to Select Role</a>
+  </header>
+
+  <main>
+    <span class="tag">STEP 03 · VOTER</span>
+    <h1>Voter Registration 🗳️</h1>
+    <p class="intro">Register for this student project demonstration and explore the voting process.</p>
+
+    <form id="voterForm">
+      <label for="name">Full Name</label>
+      <input id="name" type="text" placeholder="Enter your full name" required>
+
+      <label for="email">Email Address</label>
+      <input id="email" type="email" placeholder="you@example.com" required>
+
+      <label for="age">Age</label>
+      <input id="age" type="number" min="18" max="120" placeholder="Must be 18 or above" required>
+
+      <label for="voterid">Create a 5-digit Voter ID</label>
+      <input id="voterid" type="text" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="e.g. 12345" required>
+
+      <label for="password">Create a 5-digit Password</label>
+      <input id="password" type="password" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="5 numbers" required>
+
+      <button type="submit">Register as Voter →</button>
+
+      <p class="note">Demonstration only. Use fictional details. This page does not securely store registrations.</p>
+      <div id="message" role="status"></div>
+    </form>
+  </main>
+
+  <footer>Civic Bloom · Online Voting System Demonstration</footer>
+
+  <script>
+    document.getElementById("voterForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const age = Number(document.getElementById("age").value);
+      const voterid = document.getElementById("voterid").value;
+      const message = document.getElementById("message");
+
+      if (age < 18) {
+        message.textContent = "Registration requires an age of 18 or above for this demonstration.";
+        message.style.display = "block";
+        return;
+      }
+
+      message.innerHTML =
+        "<strong>Registration demonstration complete!</strong><br>" +
+        "Your sample Voter ID is " + voterid + "." +
+        "<br><br><a href='voter-dashboard.html'>Continue to Voter Dashboard →</a>";
+
+      message.style.display = "block";
+    });
+  </script>
+</body>
+</html>
