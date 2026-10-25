@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candidate Verification | Civic Bloom</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Arial,sans-serif;background:linear-gradient(135deg,#e8e4ff,#ffe5f0,#dcf8ef);color:#39335d;display:flex;align-items:center;justify-content:center;padding:20px}
+.container{width:100%;max-width:650px;background:#ffffffd9;border-radius:28px;padding:30px;box-shadow:0 15px 40px #5145cd20;text-align:center}
+.illustration{font-size:78px;background:linear-gradient(135deg,#ddd5ff,#d8f7ed);border-radius:22px;padding:22px;margin:20px 0}
+h1{color:#6253c7}
+p{line-height:1.7;color:#77718e}
+.steps{display:flex;justify-content:space-between;gap:8px;margin:26px 0}
+.step{flex:1;padding:13px 5px;background:#eeeaff;border-radius:14px;font-size:12px}
+.step.active{background:#d9f5e8;color:#176b50;font-weight:bold}
+.status{padding:18px;border-radius:16px;background:#fff1cf;color:#795600;margin:20px 0;line-height:1.6}
+a{display:inline-block;text-decoration:none;background:linear-gradient(90deg,#7966e8,#a27be9);color:white;padding:14px 20px;border-radius:12px;margin:5px;font-weight:bold}
+a.secondary{background:#e9e5ff;color:#5145b5}
+@media(max-width:450px){.container{padding:20px}.steps{gap:5px}.step{font-size:10px;padding:10px 3px}}
+</style>
+</head>
+<body>
+<main class="container">
+<div style="font-size:38px">🌷 Civic Bloom</div>
+<div class="illustration">🪪✨</div>
+<h1>Candidate Verification</h1>
+<p>Your candidate profile goes through a verification stage before proceeding to the dashboard.</p>
+
+<div class="steps">
+<div class="step active">✓<br>Registration</div>
+<div class="step active">🔍<br>Verification</div>
+<div class="step">▣<br>Dashboard</div>
+</div>
+
+<div class="status">
+<strong>⏳ Verification Status: Pending</strong><br>
+This is a sample status for the project demonstration. No documents are actually checked.
+</div>
+
+<p>After verification, candidates can view their details and application status.</p>
+<a href="candidate-dashboard.html">Continue to Demo Dashboard →</a>
+<a class="secondary" href="candidate-login.html">← Back to Login</a>
+</main>
+</body>
+</html>
