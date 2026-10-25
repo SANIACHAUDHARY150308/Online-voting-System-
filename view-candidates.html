@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>View Candidates | Civic Bloom</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#e8e3ff,#dcf8ef,#ffe5f0);color:#39335d;padding:20px}
+.container{max-width:950px;margin:auto}
+header,.candidate,.bottom{background:#ffffffd9;border-radius:24px;padding:24px;margin-bottom:18px;box-shadow:0 10px 30px #5145cd16}
+header{text-align:center}
+h1{color:#6253c7}
+p{color:#77718e;line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.candidate{text-align:center;padding:20px}
+.avatar{font-size:65px;background:linear-gradient(135deg,#ddd6ff,#d9f7eb);padding:20px;border-radius:20px}
+.candidate:nth-child(2) .avatar{background:linear-gradient(135deg,#ffe0ee,#e6e0ff)}
+.candidate:nth-child(3) .avatar{background:linear-gradient(135deg,#d8f8ed,#fff0d1)}
+.tag{display:inline-block;background:#e8e4ff;color:#6253c7;padding:7px 11px;border-radius:20px;font-size:12px;font-weight:bold}
+a{display:inline-block;text-decoration:none;background:linear-gradient(90deg,#7966e8,#40bba8);color:white;padding:13px 18px;border-radius:12px;margin:5px;font-weight:bold}
+a.secondary{background:#e9e5ff;color:#5145b5}
+.note{background:#fff0cd;padding:14px;border-radius:12px;font-size:13px;line-height:1.6}
+@media(max-width:650px){.grid{grid-template-columns:1fr}.candidate{display:block}header,.bottom{padding:18px}body{padding:13px}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div style="font-size:38px">🌿🗳️</div>
+<h1>Meet Your Candidates</h1>
+<p>Learn about the people standing for positive change.</p>
+</header>
+
+<div class="grid">
+<section class="candidate">
+<div class="avatar">🧑‍💼</div>
+<h2>Aarav Sharma</h2>
+<span class="tag">CAN-001</span>
+<p><strong>Community Progress</strong></p>
+<p>Promotes teamwork, student participation, and community development.</p>
+<a href="vote.html">Select Candidate</a>
+</section>
+
+<section class="candidate">
+<div class="avatar">👩‍💼</div>
+<h2>Meera Patel</h2>
+<span class="tag">CAN-002</span>
+<p><strong>Green Future</strong></p>
+<p>Supports sustainability, awareness, and a cleaner environment.</p>
+<a href="vote.html">Select Candidate</a>
+</section>
+
+<section class="candidate">
+<div class="avatar">🧑🏻‍🎓</div>
+<h2>Rohan Desai</h2>
+<span class="tag">CAN-003</span>
+<p><strong>Student Voice</strong></p>
+<p>Encourages student ideas, leadership, and equal participation.</p>
+<a href="vote.html">Select Candidate</a>
+</section>
+</div>
+
+<section class="bottom">
+<div class="note">ℹ️ These are fictional candidates for a project demonstration. Selecting a candidate opens the demo voting page; no vote is recorded here.</div>
+<div style="text-align:center;margin-top:18px">
+<a href="vote.html">Proceed to Cast Vote →</a>
+<a href="voter-dashboard.html" class="secondary">← Voter Dashboard</a>
+</div>
+</section>
+</div>
+</body>
+</html>
