@@ -1,51 +1,253 @@
 
-<script>
-document.getElementById("voterForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voter Registration | Civic Bloom</title>
 
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const age = Number(document.getElementById("age").value);
-    const voterid = document.getElementById("voterid").value.trim();
-    const password = document.getElementById("password").value;
-    const message = document.getElementById("message");
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-    if (age < 18) {
-        message.textContent = "Registration requires an age of 18 or above.";
-        message.style.display = "block";
-        return;
-    }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 25px 15px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e9e4ff, #dff7ef);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #302b50;
+        }
 
-    if (!/^[0-9]{5}$/.test(voterid) ||
-        !/^[0-9]{5}$/.test(password)) {
-        message.textContent = "Voter ID and password must each contain exactly 5 digits.";
-        message.style.display = "block";
-        return;
-    }
+        .container {
+            width: 100%;
+            max-width: 460px;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(60, 50, 100, 0.15);
+        }
 
-    if (localStorage.getItem("demoVoter_" + voterid)) {
-        message.textContent = "This Voter ID is already registered. Please use another ID.";
-        message.style.display = "block";
-        return;
-    }
+        h1 {
+            text-align: center;
+            color: #6852b8;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
 
-    const voter = {
-        name: name,
-        email: email,
-        age: age,
-        voterid: voterid,
-        password: password
-    };
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
 
-    localStorage.setItem("demoVoter_" + voterid, JSON.stringify(voter));
-    localStorage.setItem("demoRegisteredVoterID", voterid);
+        label {
+            display: block;
+            margin: 14px 0 6px;
+            font-weight: bold;
+        }
 
-    message.innerHTML =
-        "<strong>Registration successful!</strong><br>" +
-        "Your Voter ID is " + voterid +
-        ". Please log in to continue." +
-        '<br><br><a href="voter-login.html">Go to Voter Login</a>';
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d4cfee;
+            border-radius: 9px;
+            font-size: 16px;
+        }
 
-    message.style.display = "block";
-});
-</script>
+        input:focus {
+            outline: 2px solid #a99be8;
+            border-color: #6852b8;
+        }
+
+        .button {
+            display: block;
+            width: 100%;
+            margin-top: 22px;
+            padding: 13px;
+            border: none;
+            border-radius: 10px;
+            background: #7058c7;
+            color: white;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background: #5941ad;
+        }
+
+        .secondary {
+            background: #e9e4ff;
+            color: #49358d;
+            margin-top: 12px;
+        }
+
+        .secondary:hover {
+            background: #dcd3ff;
+        }
+
+        #message {
+            display: none;
+            margin-top: 18px;
+            padding: 12px;
+            border-radius: 9px;
+            overflow-wrap: anywhere;
+            line-height: 1.5;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #6852b8;
+        }
+
+        .note {
+            font-size: 12px;
+            color: #666;
+            margin-top: 15px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <h1>Voter Registration</h1>
+        <p class="subtitle">Welcome to Civic Bloom</p>
+
+        <form id="voterForm">
+            <label for="name">Full Name</label>
+            <input id="name" name="name" type="text"
+                   autocomplete="name" required>
+
+            <label for="email">Email Address</label>
+            <input id="email" name="email" type="email"
+                   autocomplete="email" required>
+
+            <label for="age">Age</label>
+            <input id="age" name="age" type="number"
+                   min="18" max="120" required>
+
+            <label for="voterid">Voter ID (5 digits for this demo)</label>
+            <input id="voterid" name="voterid" type="text"
+                   inputmode="numeric" pattern="[0-9]{5}"
+                   maxlength="5" minlength="5" required>
+
+            <label for="password">Create Password (5 digits for this demo)</label>
+            <input id="password" name="password" type="password"
+                   inputmode="numeric" pattern="[0-9]{5}"
+                   maxlength="5" minlength="5" required>
+
+            <button class="button" type="submit">
+                Register as Voter
+            </button>
+        </form>
+
+        <div id="message" role="status" aria-live="polite"></div>
+
+        <a class="button secondary" href="voter-login.html">
+            Already Registered? Login
+        </a>
+
+        <a class="back" href="role.html">← Back to Role Selection</a>
+
+        <p class="note">
+            Student project demonstration only. Registration data is stored
+            in this browser and is not suitable for real elections.
+        </p>
+    </main>
+
+    <script>
+        const voterForm = document.getElementById("voterForm");
+        const message = document.getElementById("message");
+
+        voterForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const age = Number(document.getElementById("age").value);
+            const voterid = document.getElementById("voterid").value.trim();
+            const password = document.getElementById("password").value;
+
+            message.style.display = "block";
+            message.style.background = "#ffe5e5";
+            message.style.color = "#a12626";
+
+            if (!name || !email) {
+                message.textContent = "Please enter your name and email.";
+                return;
+            }
+
+            if (!Number.isFinite(age) || age < 18 || age > 120) {
+                message.textContent =
+                    "Registration requires an age between 18 and 120.";
+                return;
+            }
+
+            if (!/^[0-9]{5}$/.test(voterid)) {
+                message.textContent =
+                    "Voter ID must contain exactly 5 digits.";
+                return;
+            }
+
+            if (!/^[0-9]{5}$/.test(password)) {
+                message.textContent =
+                    "Password must contain exactly 5 digits.";
+                return;
+            }
+
+            try {
+                const storageKey = "demoVoter_" + voterid;
+
+                if (localStorage.getItem(storageKey)) {
+                    message.textContent =
+                        "This Voter ID is already registered. Please use another ID.";
+                    return;
+                }
+
+                const voter = {
+                    name: name,
+                    email: email,
+                    age: age,
+                    voterid: voterid,
+                    password: password
+                };
+
+                localStorage.setItem(storageKey, JSON.stringify(voter));
+                localStorage.setItem("demoRegisteredVoterID", voterid);
+
+                message.style.background = "#e1f8ed";
+                message.style.color = "#176b50";
+                message.textContent =
+                    "Registration successful! Your Voter ID is " +
+                    voterid + ". You can now log in.";
+
+                const loginLink = document.createElement("a");
+                loginLink.href = "voter-login.html";
+                loginLink.textContent = " Go to Voter Login";
+                loginLink.style.display = "inline-block";
+                loginLink.style.marginTop = "8px";
+
+                message.appendChild(document.createElement("br"));
+                message.appendChild(loginLink);
+
+                voterForm.reset();
+
+            } catch (error) {
+                message.textContent =
+                    "Browser storage is unavailable. Please open the website in your browser and try again.";
+            }
+        });
+    </script>
+</body>
+</html>
