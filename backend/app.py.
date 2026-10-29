@@ -1,0 +1,70 @@
+
+from flask import Flask, render_template_string
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return render_template_string("""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Online Voting System</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background: #f1edff;
+                text-align: center;
+                padding: 30px 15px;
+                color: #29234a;
+            }
+            .card {
+                max-width: 450px;
+                margin: 40px auto;
+                padding: 25px;
+                background: white;
+                border-radius: 18px;
+                box-shadow: 0 4px 15px #d8d0ef;
+            }
+            h1 { color: #6d4acb; }
+            p { line-height: 1.6; }
+            .role {
+                display: block;
+                padding: 13px;
+                margin: 12px 0;
+                background: #6d4acb;
+                color: white;
+                text-decoration: none;
+                border-radius: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <h1>Civic Bloom</h1>
+            <h2>Online Voting System</h2>
+            <p>Secure and organized elections for your institution.</p>
+            <p>Choose your role:</p>
+            <a class="role" href="/head">Head</a>
+            <a class="role" href="/candidate">Candidate</a>
+            <a class="role" href="/voter">Voter</a>
+        </div>
+    </body>
+    </html>
+    """)
+
+@app.route("/head")
+def head():
+    return "<h2>Head Portal</h2><p>Election management will be added next.</p>"
+
+@app.route("/candidate")
+def candidate():
+    return "<h2>Candidate Portal</h2><p>Candidate registration will be added next.</p>"
+
+@app.route("/voter")
+def voter():
+    return "<h2>Voter Portal</h2><p>Voter login will be added next.</p>"
+
+if __name__ == "__main__":
+    app.run(debug=False)
