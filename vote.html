@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cast Your Vote | Civic Bloom</title>
+
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -37,8 +38,16 @@
       letter-spacing: 1px;
     }
 
-    h1 { font-size: clamp(30px, 6vw, 44px); margin: 18px 0 10px; }
-    .intro { color: #68617f; line-height: 1.6; margin-bottom: 25px; }
+    h1 {
+      font-size: clamp(30px, 6vw, 44px);
+      margin: 18px 0 10px;
+    }
+
+    .intro {
+      color: #68617f;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
 
     .notice {
       background: #fff4d8;
@@ -70,9 +79,22 @@
     }
 
     .avatar { font-size: 45px; margin-bottom: 14px; }
+
     h2 { font-size: 20px; margin-bottom: 8px; }
-    .group { color: #7658e8; font-weight: bold; font-size: 13px; margin-bottom: 12px; }
-    .description { color: #68617f; line-height: 1.6; font-size: 14px; }
+
+    .group {
+      color: #7658e8;
+      font-weight: bold;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .description {
+      color: #68617f;
+      line-height: 1.6;
+      font-size: 14px;
+      overflow-wrap: anywhere;
+    }
 
     .choose {
       display: flex;
@@ -86,7 +108,11 @@
       font-weight: bold;
     }
 
-    .choose input { width: 18px; height: 18px; accent-color: #7658e8; }
+    .choose input {
+      width: 18px;
+      height: 18px;
+      accent-color: #7658e8;
+    }
 
     button {
       width: 100%;
@@ -103,6 +129,15 @@
 
     button:disabled { opacity: .5; cursor: not-allowed; }
 
+    #emptyState {
+      background: #ffffffd9;
+      padding: 28px;
+      border-radius: 18px;
+      text-align: center;
+      color: #68617f;
+      line-height: 1.7;
+    }
+
     #message {
       display: none;
       margin-top: 20px;
@@ -111,12 +146,20 @@
       color: #17653c;
       border-radius: 14px;
       line-height: 1.7;
+      overflow-wrap: anywhere;
     }
 
     #message a { color: #17653c; font-weight: bold; }
-    footer { text-align: center; margin-top: 35px; color: #77708f; font-size: 13px; }
+
+    footer {
+      text-align: center;
+      margin-top: 35px;
+      color: #77708f;
+      font-size: 13px;
+    }
   </style>
 </head>
+
 <body>
   <header>
     <a href="voter-dashboard.html">← Back to Voter Dashboard</a>
@@ -125,49 +168,23 @@
   <main>
     <span class="tag">STEP 04 · VOTING BOOTH</span>
     <h1>Make Your Choice 🗳️</h1>
-    <p class="intro">Review the sample candidates and select one option below.</p>
+    <p class="intro">
+      Review the registered candidates and select one option below.
+    </p>
 
     <div class="notice">
-      <strong>Demo mode:</strong> These are fictional candidates. Your selection is not submitted to a real election or saved to a database.
+      <strong>Demo mode:</strong> Candidates are loaded from this browser's
+      saved registration data. This is a student demonstration, not a real election.
     </div>
 
-    <form id="voteForm">
-      <section class="candidates">
-        <article class="candidate">
-          <div class="avatar">🌱</div>
-          <h2>Aarav Sharma</h2>
-          <p class="group">Green Future Group</p>
-          <p class="description">Focused on sustainability, green spaces, and community projects.</p>
-          <label class="choose">
-            <input type="radio" name="candidate" value="Aarav Sharma" required>
-            Select Candidate
-          </label>
-        </article>
+    <div id="emptyState" hidden>
+      <h2>No candidates have registered yet.</h2>
+      <p>Registered candidates will appear here when their profiles are available.</p>
+    </div>
 
-        <article class="candidate">
-          <div class="avatar">💡</div>
-          <h2>Meera Patel</h2>
-          <p class="group">Bright Ideas Group</p>
-          <p class="description">Focused on student activities, learning opportunities, and innovation.</p>
-          <label class="choose">
-            <input type="radio" name="candidate" value="Meera Patel" required>
-            Select Candidate
-          </label>
-        </article>
-
-        <article class="candidate">
-          <div class="avatar">🤝</div>
-          <h2>Rohan Desai</h2>
-          <p class="group">Together Group</p>
-          <p class="description">Focused on inclusion, teamwork, and accessible campus events.</p>
-          <label class="choose">
-            <input type="radio" name="candidate" value="Rohan Desai" required>
-            Select Candidate
-          </label>
-        </article>
-      </section>
-
-      <button type="submit">Confirm My Selection →</button>
+    <form id="voteForm" hidden>
+      <section class="candidates" id="candidateList"></section>
+      <button type="submit">Continue to Vote Confirmation →</button>
     </form>
 
     <div id="message" role="status" aria-live="polite"></div>
@@ -176,32 +193,187 @@
   <footer>Civic Bloom · Online Voting System Demonstration</footer>
 
   <script>
-    document.getElementById("voteForm").addEventListener("submit", function(event) {
+    const candidateList = document.getElementById("candidateList");
+    const voteForm = document.getElementById("voteForm");
+    const emptyState = document.getElementById("emptyState");
+    const message = document.getElementById("message");
+
+    function loadCandidates() {
+      candidateList.replaceChildren();
+
+      const candidates = [];
+
+      try {
+        // Read candidate profiles saved by the registration page.
+        // Expected key: demoCandidateProfile (single profile)
+        const singleProfile =
+          localStorage.getItem("demoCandidateProfile");
+
+        if (singleProfile) {
+          const profile = JSON.parse(singleProfile);
+
+          if (profile && profile.name) {
+            candidates.push(profile);
+          }
+        }
+
+        // Also support a list saved under demoCandidates.
+        const candidateListData =
+          localStorage.getItem("demoCandidates");
+
+        if (candidateListData) {
+          const parsed = JSON.parse(candidateListData);
+
+          if (Array.isArray(parsed)) {
+            parsed.forEach(function(profile) {
+              if (
+                profile &&
+                profile.name &&
+                !candidates.some(function(existing) {
+                  return existing.email &&
+                    profile.email &&
+                    existing.email.toLowerCase() ===
+                    profile.email.toLowerCase();
+                })
+              ) {
+                candidates.push(profile);
+              }
+            });
+          }
+        }
+      } catch (error) {
+        emptyState.hidden = false;
+        emptyState.textContent =
+          "Unable to read candidate registrations. Please check the saved candidate data.";
+        voteForm.hidden = true;
+        return;
+      }
+
+      if (candidates.length === 0) {
+        emptyState.hidden = false;
+        voteForm.hidden = true;
+        return;
+      }
+
+      emptyState.hidden = true;
+      voteForm.hidden = false;
+
+      candidates.forEach(function(candidate, index) {
+        const card = document.createElement("article");
+        card.className = "candidate";
+
+        const avatar = document.createElement("div");
+        avatar.className = "avatar";
+        avatar.textContent = "🗳️";
+
+        const heading = document.createElement("h2");
+        heading.textContent = candidate.name;
+
+        const group = document.createElement("p");
+        group.className = "group";
+        group.textContent = candidate.group || "Independent Candidate";
+
+        const description = document.createElement("p");
+        description.className = "description";
+        description.textContent =
+          candidate.vision || "No candidate statement provided.";
+
+        const label = document.createElement("label");
+        label.className = "choose";
+
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = "candidate";
+        radio.value = String(index);
+        radio.required = true;
+
+        const labelText = document.createElement("span");
+        labelText.textContent = "Select Candidate";
+
+        label.append(radio, labelText);
+        card.append(avatar, heading, group, description, label);
+        candidateList.appendChild(card);
+      });
+    }
+
+    voteForm.addEventListener("submit", function(event) {
       event.preventDefault();
 
-      const selected = document.querySelector('input[name="candidate"]:checked');
-
-      if (!selected) return;
-
-      const confirmed = confirm(
-        "You selected " + selected.value +
-        ". Confirm this sample vote?"
+      const selected = document.querySelector(
+        'input[name="candidate"]:checked'
       );
 
-      if (confirmed) {
-        const message = document.getElementById("message");
-        message.innerHTML =
-          "<strong>🎉 Sample vote confirmed!</strong><br>" +
-          "Your demonstration selection: " + selected.value +
-          "<br><br><a href='results.html'>View Sample Results →</a>";
-
-        message.style.display = "block";
-        document.querySelectorAll('input[name="candidate"]').forEach(function(input) {
-          input.disabled = true;
-        });
-        document.querySelector('button[type="submit"]').disabled = true;
+      if (!selected) {
+        return;
       }
+
+      const voterId = localStorage.getItem("demoLoggedInVoterID");
+
+      if (!voterId) {
+        message.style.display = "block";
+        message.textContent = "Please log in before voting.";
+        message.style.background = "#ffe5e5";
+        message.style.color = "#a12626";
+        return;
+      }
+
+      const candidates = [];
+
+      try {
+        const singleProfile =
+          localStorage.getItem("demoCandidateProfile");
+
+        if (singleProfile) {
+          const profile = JSON.parse(singleProfile);
+          if (profile && profile.name) candidates.push(profile);
+        }
+
+        const listData = localStorage.getItem("demoCandidates");
+
+        if (listData) {
+          const parsed = JSON.parse(listData);
+
+          if (Array.isArray(parsed)) {
+            parsed.forEach(function(profile) {
+              if (
+                profile &&
+                profile.name &&
+                !candidates.some(function(existing) {
+                  return existing.email && profile.email &&
+                    existing.email.toLowerCase() ===
+                    profile.email.toLowerCase();
+                })
+              ) {
+                candidates.push(profile);
+              }
+            });
+          }
+        }
+      } catch (error) {
+        message.style.display = "block";
+        message.textContent = "Unable to load candidate details.";
+        return;
+      }
+
+      const candidate = candidates[Number(selected.value)];
+
+      if (!candidate) {
+        message.style.display = "block";
+        message.textContent =
+          "This candidate is no longer available. Refresh the page.";
+        return;
+      }
+
+      // Save the selected candidate for the existing confirmation page.
+      sessionStorage.setItem(
+        "demoCandidate",
+        candidate.name
+      );
+
+      window.location.href = "confirm-vote.html";
     });
+
+    loadCandidates();
   </script>
 </body>
 </html>
