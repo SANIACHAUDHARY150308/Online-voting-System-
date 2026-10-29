@@ -1,50 +1,223 @@
-<script>
-document.getElementById("voterForm").addEventListener("submit", function(event) {
-    event.preventDefault();
 
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const age = Number(document.getElementById("age").value);
-    const voterid = document.getElementById("voterid").value.trim();
-    const password = document.getElementById("password").value;
-    const message = document.getElementById("message");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voter Login | Civic Bloom</title>
 
-    if (age < 18) {
-        message.textContent = "Registration requires an age of 18 or above.";
-        message.style.display = "block";
-        return;
-    }
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-    if (!/^[0-9]{5}$/.test(voterid) ||
-        !/^[0-9]{5}$/.test(password)) {
-        message.textContent = "Voter ID and password must each contain exactly 5 digits.";
-        message.style.display = "block";
-        return;
-    }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #e9e4ff, #dff7ef);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #302b50;
+        }
 
-    if (localStorage.getItem("demoVoter_" + voterid)) {
-        message.textContent = "This Voter ID is already registered. Please use another ID.";
-        message.style.display = "block";
-        return;
-    }
+        .container {
+            width: 100%;
+            max-width: 430px;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(60, 50, 100, 0.15);
+        }
 
-    const voter = {
-        name: name,
-        email: email,
-        age: age,
-        voterid: voterid,
-        password: password
-    };
+        h1 {
+            color: #6852b8;
+            text-align: center;
+            margin-top: 0;
+        }
 
-    localStorage.setItem("demoVoter_" + voterid, JSON.stringify(voter));
-    localStorage.setItem("demoRegisteredVoterID", voterid);
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
 
-    message.innerHTML =
-        "<strong>Registration successful!</strong><br>" +
-        "Your Voter ID is " + voterid +
-        ". Please log in to continue." +
-        '<br><br><a href="voter-login.html">Go to Voter Login</a>';
+        label {
+            display: block;
+            margin: 16px 0 7px;
+            font-weight: bold;
+        }
 
-    message.style.display = "block";
-});
-</script>
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d4cfee;
+            border-radius: 9px;
+            font-size: 16px;
+        }
+
+        .button {
+            display: block;
+            width: 100%;
+            margin-top: 22px;
+            padding: 13px;
+            border: none;
+            border-radius: 10px;
+            background: #7058c7;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #5941ad;
+        }
+
+        .secondary {
+            background: #e9e4ff;
+            color: #49358d;
+            margin-top: 12px;
+        }
+
+        #message {
+            display: none;
+            margin-top: 18px;
+            padding: 12px;
+            border-radius: 9px;
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #6852b8;
+        }
+
+        .note {
+            color: #666;
+            font-size: 12px;
+            line-height: 1.5;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <h1>Voter Login</h1>
+        <p class="subtitle">Welcome back to Civic Bloom!</p>
+
+        <form id="loginForm">
+            <label for="voterId">Voter ID</label>
+            <input
+                type="text"
+                id="voterId"
+                name="voterId"
+                inputmode="numeric"
+                pattern="[0-9]{5}"
+                maxlength="5"
+                placeholder="Enter your 5-digit Voter ID"
+                required
+            >
+
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                inputmode="numeric"
+                pattern="[0-9]{5}"
+                maxlength="5"
+                placeholder="Enter your 5-digit password"
+                required
+            >
+
+            <button class="button" type="submit">Login</button>
+        </form>
+
+        <div id="message" role="status" aria-live="polite"></div>
+
+        <a class="button secondary" href="voter.html">
+            New Voter? Register Here
+        </a>
+
+        <a class="back" href="role.html">← Back to Role Selection</a>
+
+        <p class="note">
+            Demonstration project only. Login uses browser storage and is
+            not suitable for real election security.
+        </p>
+    </main>
+
+    <script>
+        const loginForm = document.getElementById("loginForm");
+        const message = document.getElementById("message");
+
+        loginForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const voterId =
+                document.getElementById("voterId").value.trim();
+            const password =
+                document.getElementById("password").value;
+
+            message.style.display = "block";
+            message.style.background = "#ffe5e5";
+            message.style.color = "#a12626";
+
+            if (!/^[0-9]{5}$/.test(voterId)) {
+                message.textContent =
+                    "Voter ID must contain exactly 5 digits.";
+                return;
+            }
+
+            if (!/^[0-9]{5}$/.test(password)) {
+                message.textContent =
+                    "Password must contain exactly 5 digits.";
+                return;
+            }
+
+            try {
+                const savedVoter =
+                    localStorage.getItem("demoVoter_" + voterId);
+
+                if (!savedVoter) {
+                    message.textContent =
+                        "Voter ID not found. Please register first.";
+                    return;
+                }
+
+                const voter = JSON.parse(savedVoter);
+
+                if (voter.password !== password) {
+                    message.textContent =
+                        "Incorrect password. Please try again.";
+                    return;
+                }
+
+                localStorage.setItem("demoLoggedInVoterID", voterId);
+
+                message.style.background = "#e1f8ed";
+                message.style.color = "#176b50";
+                message.textContent =
+                    "Login successful! Opening your dashboard...";
+
+                setTimeout(function() {
+                    window.location.href = "voter-dashboard.html";
+                }, 1000);
+
+            } catch (error) {
+                message.textContent =
+                    "Unable to read saved registration. Please register again in this browser.";
+            }
+        });
+    </script>
+</body>
+</html>
